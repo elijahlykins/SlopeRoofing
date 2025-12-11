@@ -7,45 +7,10 @@ export default function ContactForm() {
     phone: '',
     message: ''
   });
-  const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    setSubmitStatus('idle');
-
-    const form = e.target as HTMLFormElement;
-    const formDataObj = new FormData(form);
-    formDataObj.append('form-name', 'contact-form');
-
-    try {
-      const response = await fetch('/', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams(formDataObj as any).toString(),
-      });
-
-      if (response.ok) {
-        setSubmitStatus('success');
-        setFormData({ name: '', email: '', phone: '', message: '' });
-        // Redirect to thank-you page
-        window.location.href = '/thank-you';
-      } else {
-        setSubmitStatus('error');
-      }
-    } catch (error) {
-      setSubmitStatus('error');
-    } finally {
-      setIsSubmitting(false);
-    }
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   return (
@@ -54,59 +19,16 @@ export default function ContactForm() {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Side - Info */}
           <div>
-            <h2 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
-              Get In Touch
-            </h2>
-            <p className="text-xl text-gray-600 mb-8 leading-relaxed">
-              Ready to start your roofing project? Fill out the form and we'll get back to you within 24 hours with a free estimate.
-            </p>
-
-            <div className="space-y-6">
-              <div className="flex items-start space-x-4">
-                <div className="w-12 h-12 flex items-center justify-center bg-gray-900 rounded-xl flex-shrink-0">
-                  <i className="ri-phone-line text-xl text-white"></i>
-                </div>
-                <div>
-                  <h4 className="font-bold text-gray-900 mb-1">Call Us</h4>
-                  <a href="tel:8017520291" className="text-gray-600 hover:text-gray-900 transition-colors">
-                    (801) 752-0291
-                  </a>
-                </div>
-              </div>
-
-              <div className="flex items-start space-x-4">
-                <div className="w-12 h-12 flex items-center justify-center bg-gray-900 rounded-xl flex-shrink-0">
-                  <i className="ri-mail-line text-xl text-white"></i>
-                </div>
-                <div>
-                  <h4 className="font-bold text-gray-900 mb-1">Email Us</h4>
-                  <a href="mailto:support@sloperoofingutah.com" className="text-gray-600 hover:text-gray-900 transition-colors">
-                    support@sloperoofingutah.com
-                  </a>
-                </div>
-              </div>
-
-              <div className="flex items-start space-x-4">
-                <div className="w-12 h-12 flex items-center justify-center bg-gray-900 rounded-xl flex-shrink-0">
-                  <i className="ri-map-pin-line text-xl text-white"></i>
-                </div>
-                <div>
-                  <h4 className="font-bold text-gray-900 mb-1">Location</h4>
-                  <p className="text-gray-600">Serving all of Utah</p>
-                </div>
-              </div>
-            </div>
+            {/* ... your contact info (Call Us, Email Us, Location) ... */}
           </div>
 
           {/* Right Side - Form */}
           <div className="bg-white rounded-3xl shadow-xl p-8 lg:p-10">
             <form
-              id="contact-form"
               name="contact-form"
               method="POST"
               data-netlify="true"
               data-netlify-honeypot="bot-field"
-              onSubmit={handleSubmit}
               className="space-y-6"
             >
               {/* Required hidden fields */}
@@ -175,16 +97,15 @@ export default function ContactForm() {
                   rows={5}
                   className="w-full px-4 py-3 text-sm border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-gray-900 transition-all resize-none"
                   placeholder="Tell us about your roofing needs..."
-                ></textarea>
+                />
                 <p className="text-xs text-gray-500 mt-1">{formData.message.length}/500 characters</p>
               </div>
 
               <button
                 type="submit"
-                disabled={isSubmitting}
-                className="w-full bg-gray-900 hover:bg-black text-white px-8 py-4 rounded-xl font-bold text-base transition-all hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap"
+                className="w-full bg-gray-900 hover:bg-black text-white px-8 py-4 rounded-xl font-bold text-base transition-all hover:shadow-xl whitespace-nowrap"
               >
-                {isSubmitting ? 'Sending...' : 'Get Free Estimate'}
+                Get Free Estimate
               </button>
 
               {submitStatus === 'success' && (
