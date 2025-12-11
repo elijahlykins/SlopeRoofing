@@ -10,25 +10,34 @@ export default function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
     setSubmitStatus('idle');
 
     const form = e.target as HTMLFormElement;
-    const formData = new FormData(form);
-    formData.append('form-name', 'contact-form');
+    const formDataObj = new FormData(form);
+    formDataObj.append('form-name', 'contact-form');
 
     try {
       const response = await fetch('/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams(formData as any).toString(),
+        body: new URLSearchParams(formDataObj as any).toString(),
       });
 
       if (response.ok) {
         setSubmitStatus('success');
         setFormData({ name: '', email: '', phone: '', message: '' });
+        // Redirect to thank-you page
+        window.location.href = '/thank-you';
       } else {
         setSubmitStatus('error');
       }
@@ -37,13 +46,6 @@ export default function ContactForm() {
     } finally {
       setIsSubmitting(false);
     }
-  };
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
   };
 
   return (
@@ -98,16 +100,19 @@ export default function ContactForm() {
 
           {/* Right Side - Form */}
           <div className="bg-white rounded-3xl shadow-xl p-8 lg:p-10">
-            <form 
-              id="contact-form" 
+            <form
+              id="contact-form"
               name="contact-form"
-              data-netlify="true"
               method="POST"
-              onSubmit={handleSubmit} 
+              data-netlify="true"
+              data-netlify-honeypot="bot-field"
+              onSubmit={handleSubmit}
               className="space-y-6"
             >
+              {/* Required hidden fields */}
               <input type="hidden" name="form-name" value="contact-form" />
               <input type="hidden" name="bot-field" />
+
               <div>
                 <label htmlFor="name" className="block text-sm font-semibold text-gray-900 mb-2">
                   Full Name *
@@ -119,7 +124,7 @@ export default function ContactForm() {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 text-sm border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all"
+                  className="w-full px-4 py-3 text-sm border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-gray-900 transition-all"
                   placeholder="John Smith"
                 />
               </div>
@@ -135,7 +140,7 @@ export default function ContactForm() {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 text-sm border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all"
+                  className="w-full px-4 py-3 text-sm border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-gray-900 transition-all"
                   placeholder="john@example.com"
                 />
               </div>
@@ -151,7 +156,7 @@ export default function ContactForm() {
                   value={formData.phone}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 text-sm border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all"
+                  className="w-full px-4 py-3 text-sm border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-gray-900 transition-all"
                   placeholder="(801) 123-4567"
                 />
               </div>
@@ -168,7 +173,7 @@ export default function ContactForm() {
                   required
                   maxLength={500}
                   rows={5}
-                  className="w-full px-4 py-3 text-sm border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all resize-none"
+                  className="w-full px-4 py-3 text-sm border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-gray-900 transition-all resize-none"
                   placeholder="Tell us about your roofing needs..."
                 ></textarea>
                 <p className="text-xs text-gray-500 mt-1">{formData.message.length}/500 characters</p>
