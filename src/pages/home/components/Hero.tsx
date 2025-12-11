@@ -129,7 +129,7 @@ export default function Hero() {
           <div className="mt-20 flex flex-wrap items-center justify-center gap-8 animate-fade-in-delay-3">
             <div className="flex items-center space-x-2">
               <i className="ri-star-fill text-white text-2xl drop-shadow-lg"></i>
-              <span className="text-white font-semibold text-lg whitespace-nowrap drop-shadow-lg">20+ Years</span>
+              <span className="text-white font-semibold text-lg whitespace-nowrap drop-shadow-lg">20+ Years Experience</span>
             </div>
             <button 
               onClick={() => scrollToSection('about')}

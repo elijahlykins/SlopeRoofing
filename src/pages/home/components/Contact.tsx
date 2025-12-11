@@ -98,7 +98,7 @@ export default function Contact() {
                   </div>
                   <div>
                     <div className="font-semibold text-gray-900 mb-1">Email</div>
-                    <a href="mailto:info@sloperoofing.com" className="text-gray-600 hover:text-gray-900 transition-colors">info@sloperoofing.com</a>
+                    <a href="mailto:support@sloperoofingutah.com" className="text-gray-600 hover:text-gray-900 transition-colors">support@sloperoofingutah.com</a>
                   </div>
                 </div>
 

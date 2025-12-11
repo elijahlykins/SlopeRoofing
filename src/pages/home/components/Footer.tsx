@@ -68,7 +68,7 @@ export default function Footer() {
               </li>
               <li className="flex items-center space-x-2">
                 <i className="ri-mail-line text-lg text-gray-900"></i>
-                <a href="mailto:info@sloperoofing.com" className="text-gray-600 hover:text-gray-900 transition-colors">info@sloperoofing.com</a>
+                <a href="mailto:support@sloperoofingutah.com" className="text-gray-600 hover:text-gray-900 transition-colors">support@sloperoofingutah.com</a>
               </li>
               <li className="flex items-center space-x-2">
                 <i className="ri-map-pin-line text-lg text-gray-900"></i>

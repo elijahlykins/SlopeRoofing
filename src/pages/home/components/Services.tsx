@@ -26,7 +26,7 @@ export default function Services() {
       details: 'Our roof removal service includes complete tear-off of your existing roof, proper disposal of old materials, and thorough cleanup of your property. We handle everything from shingle removal to decking preparation, ensuring your home is ready for a new roof installation. Our team works efficiently and safely, protecting your property throughout the process.'
     },
     {
-      icon: 'ri-paint-brush-line',
+      icon: 'ri-hammer-line',
       title: 'Roof Resurfacing',
       description: 'Expert resurfacing to restore and protect your existing roof, extending its lifespan with quality materials.',
       details: 'Roof resurfacing is an excellent option when your roof structure is sound but needs a fresh layer of protection. We apply new roofing materials over your existing roof, saving time and money while extending the life of your roof. This service is perfect for roofs that are showing signs of wear but don\'t require a complete replacement.'

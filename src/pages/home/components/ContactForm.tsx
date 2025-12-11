@@ -78,8 +78,8 @@ export default function ContactForm() {
                 </div>
                 <div>
                   <h4 className="font-bold text-gray-900 mb-1">Email Us</h4>
-                  <a href="mailto:info@sloperoofing.com" className="text-gray-600 hover:text-gray-900 transition-colors">
-                    info@sloperoofing.com
+                  <a href="mailto:support@sloperoofingutah.com" className="text-gray-600 hover:text-gray-900 transition-colors">
+                    support@sloperoofingutah.com
                   </a>
                 </div>
               </div>
