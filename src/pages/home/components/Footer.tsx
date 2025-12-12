@@ -17,8 +17,8 @@ export default function Footer() {
 
   return (
     <footer className="relative bg-white border-t border-gray-200">
-      <div className="max-w-7xl mx-auto px-6 py-12">
-        <div className="grid md:grid-cols-3 gap-12 mb-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
+        <div className="grid md:grid-cols-3 gap-8 sm:gap-12 mb-6 sm:mb-8">
           {/* Company Info */}
           <div>
             <button 

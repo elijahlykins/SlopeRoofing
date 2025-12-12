@@ -56,15 +56,15 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="relative py-24 px-6 overflow-hidden">
+    <section id="contact" className="relative py-16 sm:py-20 md:py-24 px-4 sm:px-6 overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-br from-white via-gray-50 to-gray-100"></div>
       
       <div className="relative max-w-7xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-5xl md:text-6xl font-bold text-gray-900 mb-4">Get In Touch</h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-transparent via-gray-900 to-transparent mx-auto mb-6"></div>
-          <p className="text-xl text-gray-600">
+        <div className="text-center mb-12 sm:mb-16">
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 mb-3 sm:mb-4">Get In Touch</h2>
+          <div className="w-24 h-1 bg-gradient-to-r from-transparent via-gray-900 to-transparent mx-auto mb-4 sm:mb-6"></div>
+          <p className="text-lg sm:text-xl text-gray-600 px-4">
             Ready to protect your home?{' '}
             <button 
               onClick={scrollToForm}
@@ -75,13 +75,13 @@ export default function Contact() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-12">
+        <div className="grid md:grid-cols-2 gap-8 sm:gap-12">
           {/* Contact Info */}
           <div className="space-y-6">
-            <div className="bg-white/40 backdrop-blur-xl rounded-2xl p-8 border border-white/60 shadow-xl">
-              <h3 className="text-2xl font-bold text-gray-900 mb-6">Contact Information</h3>
+            <div className="bg-white/40 backdrop-blur-xl rounded-2xl p-6 sm:p-8 border border-white/60 shadow-xl">
+              <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4 sm:mb-6">Contact Information</h3>
               
-              <div className="space-y-6">
+              <div className="space-y-4 sm:space-y-6">
                 <div className="flex items-start space-x-4">
                   <div className="w-12 h-12 flex items-center justify-center bg-black/90 backdrop-blur-md rounded-xl flex-shrink-0 border border-white/20">
                     <i className="ri-phone-line text-xl text-white"></i>
@@ -124,8 +124,8 @@ export default function Contact() {
               </div>
             </div>
 
-            <div className="bg-white/40 backdrop-blur-xl rounded-2xl p-8 border border-white/60 shadow-xl">
-              <h3 className="text-xl font-bold text-gray-900 mb-4">Why Choose Us?</h3>
+            <div className="bg-white/40 backdrop-blur-xl rounded-2xl p-6 sm:p-8 border border-white/60 shadow-xl">
+              <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-3 sm:mb-4">Why Choose Us?</h3>
               <ul className="space-y-3">
                 <li className="flex items-center text-gray-700">
                   <i className="ri-check-line text-gray-900 mr-3 text-xl"></i>
@@ -150,8 +150,8 @@ export default function Contact() {
           </div>
 
           {/* Contact Form */}
-          <div id="contact-form" className="bg-white/40 backdrop-blur-xl rounded-2xl p-8 border border-white/60 shadow-xl">
-            <h3 className="text-2xl font-bold text-gray-900 mb-6">Request a Free Quote</h3>
+          <div id="contact-form" className="bg-white/40 backdrop-blur-xl rounded-2xl p-6 sm:p-8 border border-white/60 shadow-xl">
+            <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4 sm:mb-6">Request a Free Quote</h3>
             
             <form 
               onSubmit={handleSubmit} 
